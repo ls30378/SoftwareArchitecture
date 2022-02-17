@@ -35,11 +35,11 @@ services:
       dockerfile: ./comment/Dockerfile
     command: sh -c "cd comment && yarn server"
     ports: 
-      - 4000:4000
+      - 4001:4000
     volumes:
       - .:/comment
     depends_on:
-      - mongo
+      - mongodb
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: 'rabbitmq'
