@@ -1,0 +1,7 @@
+.dbdata
+__pycache__
+migrations
+node_modules
+.env
+.vscode
+/main/main

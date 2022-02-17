@@ -1,0 +1,126 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - 0.0.0.0:27017:27017
+    volumes:
+      - type: volume
+        source: MONGO_DATA
+        target: /data/db
+      - type: volume
+        source: MONGO_CONFIG
+        target: /data/configdb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=toor
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=comment
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=toor
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=root
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_PORT=27017
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodb
+
+  comment:
+    build:
+      context: .
+      dockerfile: ./comment/Dockerfile
+    command: sh -c "cd comment && yarn server"
+    ports: 
+      - 4000:4000
+    volumes:
+      - .:/comment
+    depends_on:
+      - mongo
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    # volumes:
+    #     - "~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/"
+    #     - "~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq"
+  frontend:
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+    command: sh -c "cd client && yarn start"
+    ports:
+      - 3001:3000
+    volumes:
+      - .:/client
+  admin:
+    build:
+      context: .
+      dockerfile: ./backadmin/Dockerfile
+    command: 'python ./backadmin/manage.py runserver 0.0.0.0:8000'
+    ports:
+      - 8002:8000
+    volumes:
+      - .:/backadmin
+    depends_on:
+      - admin-db
+  admin-db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: admin
+      MYSQL_USER: toor
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - /backadmin/.dbdata:/var/lib/mysql
+    ports:
+      - 33068:3306
+    depends_on:
+      - rabbitmq
+  konsumuesi:
+    build:
+      context: .
+      dockerfile: ./main/Dockerfile
+    command: "python ./main/consumer.py"
+    depends_on:
+      - main-backend
+  main-backend:
+    build:
+      context: .
+      dockerfile: ./main/Dockerfile
+    command: "python ./main/main.py"
+    ports:
+      - 8003:5000
+    volumes:
+      - .:/main
+    depends_on:
+      - main-db
+
+  main-db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: main
+      MYSQL_USER: toor
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - /main/.dbdata:/var/lib/mysql
+    ports:
+      - 33069:3306
+    depends_on:
+      - rabbitmq
+networks:
+  rabbitmq_net:
+    driver: bridge
+volumes:
+  MONGO_DATA:
+    name: MONGO_DATA
+  MONGO_CONFIG:
+    name: MONGO_CONFIG
