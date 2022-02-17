@@ -1,0 +1,37 @@
+.card-back {
+  width: 269px;
+  height: 332px;
+  background-color: #e8e8e8;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.card {
+  width: 269px;
+  height: 332px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 17px;
+  bottom: 0;
+  transition: bottom 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.book-card p {
+  text-align: center;
+  font-size: 1em;
+}
+
+.card-back:hover .card {
+  position: relative;
+  bottom: 38px;
+}
+
+.stars {
+  position: absolute;
+  align-self: flex-end;
+  z-index: 5;
+  display: flex;
+}

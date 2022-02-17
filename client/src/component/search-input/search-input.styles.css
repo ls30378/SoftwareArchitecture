@@ -1,0 +1,28 @@
+.search-form input {
+  width: 400px;
+  background: url("../../assets/search.svg") no-repeat;
+  background-position: 0 90%;
+  color: white;
+  border: 0;
+  outline: none;
+  font-size: 1.5em;
+  padding-left: 20px;
+  padding-bottom: 5px;
+}
+.search-form input::placeholder {
+  color: white;
+}
+.search-form input:focus {
+  outline: none;
+  border: 0;
+}
+.search-form {
+  position: relative;
+  top: 0;
+  left: -5%;
+  transition: top 2s ease-in-out;
+}
+.search-form.active {
+  position: relative;
+  top: 50%;
+}

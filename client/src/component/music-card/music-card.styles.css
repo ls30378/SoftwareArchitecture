@@ -1,0 +1,56 @@
+.music-card {
+  height: 300px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #e9e9e9;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.music-card:hover {
+  opacity: 0.8;
+}
+
+.card-m {
+  display: flex;
+  transition: 2s;
+}
+
+.card-m:hover {
+  scale: 1.2;
+}
+.neumorphic {
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+  font-size: 5rem;
+  width: 200px;
+  height: 200px;
+  border-radius: 35px;
+  overflow: hidden;
+  padding: 1.3rem;
+  display: flex;
+}
+
+.neumorphic--pressed {
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+.variation2 span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0.3rem;
+  border-radius: 1rem;
+  width: 50%;
+  margin: 0 auto;
+  background-color: currentColor;
+}
+.variation2.pressed {
+  color: #5ab9ea;
+}

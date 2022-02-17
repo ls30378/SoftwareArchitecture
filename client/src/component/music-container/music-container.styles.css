@@ -1,0 +1,10 @@
+.music-container {
+  display: flex;
+  position: relative;
+  width: 90vw;
+  height: 100%;
+  padding: 10px 0;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}

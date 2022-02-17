@@ -1,0 +1,12 @@
+.book-container {
+  width: 90vw;
+  height: 90%;
+  display: flex;
+  padding: 50px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  justify-content: space-evenly;
+}
+.book-container.hidden {
+  display: none;
+}

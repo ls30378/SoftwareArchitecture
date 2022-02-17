@@ -1,0 +1,7 @@
+const FetchQuotesActionTypes = {
+    FETCH_QUOTES_START: 'FETCH_QUOTES_START',
+    FETCH_QUOTES_SUCCESS: 'FETCH_QUOTES_SUCCESS',
+    FETCH_QUOTES_FAILURE: 'FETCH_QUOTES_FAILURE'
+}
+
+export default FetchQuotesActionTypes;
