@@ -25,3 +25,43 @@ Made with Express (Node) and MongoDB
 ## Docker
 
 docker-compose
+
+### mongodb
+
+MongoDB for Express Backend
+
+### mongo-express
+
+GUI Frontend for Mongo
+
+### comment
+
+Express (NodeJs) backend for handling comments
+
+### rabbitmq
+
+RabbitMQ, gets new Books from 'admin' and sends them to 'comment' and 'main'
+
+### frontend
+
+Frontend built with ReactJS
+
+### admin
+
+Django (Python) backend
+
+### admin-db
+
+MySQL Database for 'admin'
+
+### konsumuesi
+
+Python consumer (RabbitMQ) for 'main' backend
+
+### main-backend
+
+Flask (Python) backend
+
+### main-db
+
+MySQL Database for 'main-backend'
