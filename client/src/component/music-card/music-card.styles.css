@@ -32,6 +32,7 @@
   overflow: hidden;
   padding: 1.3rem;
   display: flex;
+  background-color: rgba(217, 203, 203, 0.43);
 }
 
 .neumorphic--pressed {
@@ -53,4 +54,8 @@
 }
 .variation2.pressed {
   color: #5ab9ea;
+}
+
+.filter {
+  filter: hue-rotate(80deg);
 }

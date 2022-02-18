@@ -1,22 +1,17 @@
 const express = require('express')
 
 const router = express.Router()
+const headers = require('../headers')
+const cors = require('cors')
 
 const Comment = require('../models/comment')
 const Post = require('../models/post')
 
 //Getting all
 router.get('/post/:id', getPost, async (req, res) => {
-    // const post = Post.findById(req.params.id).populate('comments')
-    // post.populate('comments')
-    // res.send(post.populate('comments'))
-    // console.log(post.comments[0].komenti)
     const post = await Post.findById(req.params.id).exec();
-    // console.log(res.send(201).json(post))
     await post.populate('comments')
-
-    // console.log(post)
-    await res.status(200).json(post)
+    await res.status(200).json(post.comments)
 
 })
 router.get('/', (req, res) => {
@@ -29,7 +24,6 @@ router.post('/post', async (req, res) => {
         _id: id,
     })
     try {
-
         await post.save();
         res.status(201).json(post)
     } catch (error) {
@@ -39,7 +33,7 @@ router.post('/post', async (req, res) => {
 })
 
 // Create comment at Book(post)
-router.post('/post/:id', async (req, res) => {
+router.post('/post/:id', cors(), headers, async (req, res) => {
     // find out which post you are commenting
     const id = req.params.id;
     // get the comment text and record post id

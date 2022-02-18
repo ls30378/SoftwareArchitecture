@@ -1,8 +1,8 @@
 import "./browse-book.styles.css";
-
+import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Rating } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CommentContainer from "../../comment-container/comment-container.component";
 import { useSelector } from "react-redux";
 import { selectDetails } from "../../../redux/details/fetch.selector";
@@ -12,6 +12,18 @@ const BrowseBook = () => {
   const { bookid } = useParams();
   const [values, setValues] = useState(3.6);
   const [hide, setHidden] = useState(true);
+
+  const rate = async (event, newValue) => {
+    console.log(newValue, bookid);
+    const data = { vleresime: newValue, libri_id: bookid };
+    await axios.post("http://localhost:8003/api/books/vleresime", data);
+    await setVleresime(newValue);
+    await alert("Thanks for rating");
+  };
+  const [vleresimet, setVleresime] = useState(0);
+  useEffect(async () => {
+    await setVleresime(list[3].vleresime);
+  }, list);
   return (
     <>
       {Array.isArray(list) && list.length ? (
@@ -22,8 +34,8 @@ const BrowseBook = () => {
               {
                 <Rating
                   name="simple-controlled"
-                  value={list[3].vleresime}
-                  onChange={(event, newValue) => setValues(newValue)}
+                  value={vleresimet}
+                  onChange={rate}
                   size="large"
                 />
               }
@@ -43,7 +55,7 @@ const BrowseBook = () => {
             </div>
           </div>
           <h2>Comments</h2>
-          <CommentContainer />
+          <CommentContainer bookid={bookid} />
         </div>
       ) : null}
     </>

@@ -5,6 +5,7 @@ import searchReducer from "./search/search.reducer";
 import fetchReducer from "./fetch/fetch.reducer";
 import fetchQuoteReducer from "./quote-fetch/quote-fetch.reducer";
 import detailsReducer from "./details/fetch.reducer";
+import commentReducer from "./comment-fetch/fetch.reducer";
 
 const persistConfig = {
     key: 'root',
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     search: searchReducer,
     fetch: fetchReducer,
     quotes: fetchQuoteReducer,
-    details: detailsReducer
+    details: detailsReducer,
+    comment: commentReducer
 
 
 });

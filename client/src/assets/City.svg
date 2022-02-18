@@ -1,0 +1,22 @@
+<svg width="111" height="121" viewBox="0 0 111 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="-3" y="3" width="45" height="114" rx="5" transform="matrix(-1 0 0 1 45 0)" stroke="white" stroke-width="6"/>
+<rect width="11" height="12" rx="5.5" transform="matrix(-1 0 0 1 22 14)" fill="white"/>
+<rect width="11" height="12" rx="5.5" transform="matrix(-1 0 0 1 22 14)" stroke="white"/>
+<rect width="11" height="12" rx="5.5" transform="matrix(-1 0 0 1 22 30)" fill="white"/>
+<rect width="11" height="12" rx="5.5" transform="matrix(-1 0 0 1 22 30)" stroke="white"/>
+<rect width="11" height="12" rx="5.5" transform="matrix(-1 0 0 1 22 46)" fill="white"/>
+<rect width="11" height="12" rx="5.5" transform="matrix(-1 0 0 1 22 46)" stroke="white"/>
+<rect width="11" height="12" rx="5.5" transform="matrix(-1 0 0 1 22 62)" fill="white"/>
+<rect width="11" height="12" rx="5.5" transform="matrix(-1 0 0 1 22 62)" stroke="white"/>
+<rect width="15" height="23" rx="7.5" transform="matrix(-1 0 0 1 33 94)" fill="white"/>
+<rect width="15" height="23" rx="7.5" transform="matrix(-1 0 0 1 33 94)" stroke="white"/>
+<rect width="10" height="12" rx="5" transform="matrix(-1 0 0 1 41 14)" fill="white"/>
+<rect width="10" height="12" rx="5" transform="matrix(-1 0 0 1 41 14)" stroke="white"/>
+<rect width="10" height="12" rx="5" transform="matrix(-1 0 0 1 41 30)" fill="white"/>
+<rect width="10" height="12" rx="5" transform="matrix(-1 0 0 1 41 30)" stroke="white"/>
+<rect width="10" height="12" rx="5" transform="matrix(-1 0 0 1 41 46)" fill="white"/>
+<rect width="10" height="12" rx="5" transform="matrix(-1 0 0 1 41 46)" stroke="white"/>
+<rect width="10" height="12" rx="5" transform="matrix(-1 0 0 1 41 62)" fill="white"/>
+<rect width="10" height="12" rx="5" transform="matrix(-1 0 0 1 41 62)" stroke="white"/>
+<path d="M108 73.5731C108 71.5864 106.824 69.7882 105.004 68.9921L82.5037 59.1508C81.2263 58.5921 79.7737 58.5921 78.4963 59.1508L55.9963 68.9921C54.1762 69.7882 53 71.5864 53 73.5731V113C53 115.761 55.2386 118 58 118H103C105.761 118 108 115.761 108 113V73.5731Z" stroke="white" stroke-width="6"/>
+</svg>

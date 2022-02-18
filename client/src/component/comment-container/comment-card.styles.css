@@ -1,0 +1,32 @@
+.comment-card {
+  /* color: rgb(82, 82, 82); */
+  /* box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; */
+  margin-bottom: 20px;
+  background-color: #003bde;
+  position: relative;
+  padding: 20px;
+  color: white;
+  min-width: 300px;
+}
+.emri {
+  font-style: italic;
+  font-size: 1.3em;
+  font-weight: 300;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  text-decoration: underline;
+}
+
+.komenti {
+  font-weight: 300;
+  font-size: 1em;
+}
+.comment-card::after {
+  content: "";
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  bottom: -25px;
+  left: 90%;
+  background-color: #003bde;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}

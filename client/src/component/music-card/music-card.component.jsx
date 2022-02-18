@@ -1,8 +1,7 @@
 import "./music-card.styles.css";
 import { Slider } from "@mui/material";
 import { useRef, useState } from "react";
-import logo from "../../assets/hand.png";
-const MusicCard = ({ sound, title }) => {
+const MusicCard = ({ sound, title, logo }) => {
   const audioPlayer = useRef();
   const changeVolume = (event) => {
     audioPlayer.current.volume = event.target.value / 100;

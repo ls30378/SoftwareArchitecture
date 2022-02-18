@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 
 mongoose.connect(process.env.DATABASE_URL)
 console.log('started')
-
+// 
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to database'))
@@ -19,5 +19,5 @@ receiver
 const commentRouter = require('./routes/comment')
 app.use('/comment', commentRouter)
 
-app.listen(4000, '0.0.0.0', () => console.log('Server Started'))
+app.listen(4000, () => console.log('Server Started'))
 
