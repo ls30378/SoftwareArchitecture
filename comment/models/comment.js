@@ -17,10 +17,10 @@ const komentSchema = new mongoose.Schema({
         default: Date.now
     },
     post: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.Number,
         ref: 'Post'
     }
 
 })
 
-modules.exports = mongoose.model('Comment', komentSchema)
+module.exports = mongoose.model('Comment', komentSchema)

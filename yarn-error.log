@@ -1,0 +1,36 @@
+Arguments: 
+  /usr/local/bin/node /opt/yarn-v1.22.17/bin/yarn.js add amqlib
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.14.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/amqlib: Not found
+      at Request.params.callback [as _callback] (/opt/yarn-v1.22.17/lib/cli.js:67029:18)
+      at Request.self.callback (/opt/yarn-v1.22.17/lib/cli.js:140883:22)
+      at Request.emit (node:events:520:28)
+      at Request.<anonymous> (/opt/yarn-v1.22.17/lib/cli.js:141855:10)
+      at Request.emit (node:events:520:28)
+      at IncomingMessage.<anonymous> (/opt/yarn-v1.22.17/lib/cli.js:141777:12)
+      at Object.onceWrapper (node:events:639:28)
+      at IncomingMessage.emit (node:events:532:35)
+      at endReadableNT (node:internal/streams/readable:1346:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

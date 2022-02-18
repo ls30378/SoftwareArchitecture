@@ -3,7 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .models import Libri, Autori, Vleresime, Zhanri
 from .serializers import LibriSerializer, AutoriSerializer, VleresimeSerializer, ZhanriSerializer
-from .producer import publish
+from .producer import publish, publishTwo
 # Create your views here
 
 
@@ -31,8 +31,9 @@ class LibriViewSet(viewsets.ViewSet):
     def create(self, request):
         serializer = LibriSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
+        # serializer.save()
         publish('liber_created', serializer.data)
+        publishTwo('liber_created', request.data['id'])
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, pk=None):  # shembull /api/libri/<str:id>

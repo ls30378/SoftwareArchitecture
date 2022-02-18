@@ -4,7 +4,7 @@ services:
     image: mongo:latest
     container_name: mongodb
     ports:
-      - 0.0.0.0:27017:27017
+      - 0.0.0.0:27018:27017
     volumes:
       - type: volume
         source: MONGO_DATA
@@ -12,10 +12,14 @@ services:
       - type: volume
         source: MONGO_CONFIG
         target: /data/configdb
+      - ./mongo-entrypoint.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
     environment:
       - MONGO_INITDB_ROOT_USERNAME=toor
-      - MONGO_INITDB_ROOT_PASSWORD=root
-      - MONGO_INITDB_DATABASE=comment
+      - MONGO_INITDB_ROOT_PASSWORD=demo
+      - MONGO_INITDB_DATABASE=comments
+    command: mongod
+
+
   mongo-express:
     image: mongo-express:latest
     container_name: mongo-express
@@ -28,17 +32,18 @@ services:
       - 8081:8081
     depends_on:
       - mongodb
-
   comment:
     build:
       context: .
       dockerfile: ./comment/Dockerfile
-    command: sh -c "cd comment && yarn server"
+    command: sh -c "cd comment && yarn server "
     ports: 
       - 4001:4000
     volumes:
       - .:/comment
     depends_on:
+      - mongodb
+    links:
       - mongodb
   rabbitmq:
     image: rabbitmq:3-management-alpine

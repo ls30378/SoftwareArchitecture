@@ -1,9 +1,9 @@
 FROM node:lts-alpine
 ENV NODE_ENV=production
-WORKDIR /usr/src/app
+WORKDIR /comment
 COPY ["./comment/yarn.lock","./comment/package.json", "./comment/package-lock.json*", "./comment/npm-shrinkwrap.json*", "./"]
-RUN yarn install --production --silent && mv node_modules ../
-COPY . .
+RUN yarn install 
+COPY ./comment .
 EXPOSE 4000
-RUN chown -R node /usr/src/app
+# RUN chown -R node /usr/src/app
 USER node
