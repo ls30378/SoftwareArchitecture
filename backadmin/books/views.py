@@ -3,7 +3,8 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .models import Libri, Autori, Vleresime, Zhanri
 from .serializers import LibriSerializer, AutoriSerializer, VleresimeSerializer, ZhanriSerializer
-from .producer import publish, publishTwo
+from .producer import publish
+from .producerTwo import publishTwo
 # Create your views here
 
 
