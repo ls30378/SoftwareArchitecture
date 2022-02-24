@@ -32,9 +32,10 @@ class LibriViewSet(viewsets.ViewSet):
     def create(self, request):
         serializer = LibriSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        # serializer.save()
+        serializer.save()
+        print(serializer.data)
         publish('liber_created', serializer.data)
-        publishTwo('liber_created', request.data['id'])
+        publishTwo('liber_created', serializer.data['id'])
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, pk=None):  # shembull /api/libri/<str:id>
