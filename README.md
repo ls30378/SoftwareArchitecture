@@ -1,6 +1,22 @@
 # SoftwareArchitecture
 
-Simple online Book Database with ratings and comments.
+Is an internet book database, which provides the users to
+search, rate, and comment the books. It also has a built-in
+white noise application, to make a relaxing ambient for
+reading.
+It is built following microservice architecture principles.
+Tech used:
+* React
+** Redux
+** Redux-thunk
+* Django RESTFramework (admin service)
+* Flask (main service)
+* ExpressJs (comment service)
+* MySQL (admin, main service)
+* MongoDB (comment service)
+* RabbitMQ
+* ExpressGateway
+* Docker
 
 ## UI Design
 
