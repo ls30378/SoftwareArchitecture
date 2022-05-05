@@ -19,7 +19,7 @@ export const fetchCommentStartAsync = (url) => {
     return dispatch => {
         dispatch(fetchCommentStart());
 
-        fetch(`http://localhost:4001/comment/post/${url}`).then((res) => res.json()).then(resJson => {
+        fetch(`http://localhost:8080/api/comment/post/${url}`).then((res) => res.json()).then(resJson => {
             console.log(resJson)
             dispatch(fetchCommentSuccess(resJson));
             return dispatch;

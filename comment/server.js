@@ -17,7 +17,7 @@ db.once('open', () => console.log('Connected to database'))
 app.use(express.json())
 receiver
 const commentRouter = require('./routes/comment')
-app.use('/comment', commentRouter)
+app.use('/api/comment', commentRouter)
 
 app.listen(4000, () => console.log('Server Started'))
 

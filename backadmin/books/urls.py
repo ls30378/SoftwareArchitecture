@@ -18,24 +18,24 @@ from django.urls import path
 
 from .views import LibriViewSet, AutoriViewSet, VleresimeViewSet, ZhanriViewSet
 urlpatterns = [
-    path('libri/', LibriViewSet.as_view({
+    path('api/admin/libri/', LibriViewSet.as_view({
         'get': 'list',
         'post': 'create'
     })),
-    path('libri/<str:pk>', LibriViewSet.as_view({
+    path('api/admin/libri/<str:pk>', LibriViewSet.as_view({
         'get': 'retrieve',
         'put': 'update',
         'delete': 'destroy'
     })),
-    path('autori/', AutoriViewSet.as_view({
+    path('api/admin/autori/', AutoriViewSet.as_view({
         'get': 'list',
         'post': 'create'
     })),
-    path('vleresime/', VleresimeViewSet.as_view({
+    path('api/admin/vleresime/', VleresimeViewSet.as_view({
         'get': 'list',
         'post': 'create'
     })),
-    path('zhanri/', ZhanriViewSet.as_view({
+    path('api/admin/zhanri/', ZhanriViewSet.as_view({
         'get': 'list',
         'post': 'create'
     }))
