@@ -19,7 +19,7 @@ export const fetchDetailsStartAsync = (url) => {
     return dispatch => {
         dispatch(fetchDetailsStart());
 
-        fetch(`http://localhost:8003/api/${url}`).then((res) => res.json()).then(resJson => {
+        fetch(`http://localhost:8080/api/main/${url}`).then((res) => res.json()).then(resJson => {
             dispatch(fetchDetailsSuccess(resJson));
             return dispatch;
         }).catch(error => dispatch(fetchDetailsFailure(error.message)))

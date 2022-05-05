@@ -1,5 +1,19 @@
 version: '3.8'
 services:
+  express-gateway:
+    build:
+      context: .
+      dockerfile: ./express-gateway/Dockerfile
+    ports:
+      - "8080:8080"
+      - "9876:9876"
+    depends_on:
+      - comment
+      - admin
+      - main-backend
+    volumes:
+      - ./express-gateway/system.config.yml:/var/lib/eg/system.config.yml
+      - ./express-gateway/gateway.config.yml:/var/lib/eg/gateway.config.yml
   mongodb:
     image: mongo:latest
     container_name: mongodb

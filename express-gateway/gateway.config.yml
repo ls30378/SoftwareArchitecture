@@ -1,0 +1,75 @@
+http:
+  port: 8080
+  host: localhost
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  client:
+    host: "*"
+    paths: ["/client/", "./client/*"]
+  comment:
+    host: "*"
+    paths: ["/comment", "./comment/*"]
+  admin:
+    host: "*"
+    paths: ["/admin", "/admin/*"]
+  main:
+    host: "*"
+    paths: ["/api/main", "/api/main/*"]
+  # see: http://www.express-gateway.io/docs/configuration/gateway.config.yml/apiEndpoints
+serviceEndpoints:
+  client:
+    url: "http://frontend:3000"
+  comment:
+    url: "http://comment:4000"
+  admin:
+    url: "http://admin:8000"
+  main:
+    url: "http://main-backend:5000/"
+
+  # see: http://www.express-gateway.io/docs/configuration/gateway.config.yml/serviceEndpoints
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  clientPipelines:
+    apiEndpoints:
+      - client
+    policies:
+      - proxy:
+          action:
+            serviceEndpoint: client
+            changeOrigin: true
+  commentPipelines:
+    apiEndpoints:
+      - comment
+    policies:
+      - proxy:
+          action:
+            serviceEndpoint: comment
+            changeOrigin: true
+  adminPipelines:
+    apiEndpoints:
+      - admin
+    policies:
+      - proxy:
+          action:
+            serviceEndpoint: admin
+            changeOrigin: true
+  mainPipelines:
+    apiEndpoints:
+      - main
+    policies:
+      - proxy:
+          action:
+            serviceEndpoint: main
+            changeOrigin: true
+
+  # see: https://www.express-gateway.io/docs/configuration/gateway.config.yml/pipelines

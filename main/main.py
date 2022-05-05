@@ -141,7 +141,7 @@ def index():
     return jsonify(vleresimi)
 
 
-@app.route('/api/books')
+@app.route('/api/main/books')
 def getBooks():
     query = db.session.query(Autori, Libri).outerjoin(
         Libri, Autori.id == Libri.autori_id).all()
@@ -151,7 +151,7 @@ def getBooks():
     return {'librat': data}
 
 
-@app.route('/api/autor')
+@app.route('/api/main/autor')
 def getAuthors():
     return jsonify(Autori.query.all())
 
@@ -164,12 +164,12 @@ def getAuthors():
 # SEARCH llbrat me titull
 
 
-@app.route('/api/books/<title>')
+@app.route('/api/main/books/<title>')
 def get_books(title):
     return jsonify(Libri.query.filter(Libri.titulli.like('%'+title+'%')).all())
 
 
-@app.route('/api/books/id/<id>')
+@app.route('/api/main/books/id/<id>')
 def get_one_book(id):
     libri = Libri.query.filter(Libri.id == id).first()
     v = Vleresime.query.with_entities(func.avg(Vleresime.vleresime).label(
@@ -180,7 +180,7 @@ def get_one_book(id):
     return l
 
 
-@app.route('/api/books/vleresime/<bookid>')
+@app.route('/api/main/books/vleresime/<bookid>')
 def get_v_book(bookid):
     # v = db.session.query(func.avg(Vleresime.vleresime)
     #  ).filter(Vleresime.libri_id == 8).first()
@@ -192,7 +192,7 @@ def get_v_book(bookid):
     return data
 
 
-@app.route('/api/books/vleresime', methods=['POST'])
+@app.route('/api/main/books/vleresime', methods=['POST'])
 def add_vleresim():
     req = json.loads(request.data)
     vleresim = Vleresime(vleresime=req['vleresime'], libri_id=req['libri_id'])
@@ -201,14 +201,14 @@ def add_vleresim():
     return jsonify(req)
 
 
-@app.route('/api/books/v')
+@app.route('/api/main/books/v')
 def get_v_books():
     return jsonify(Libri.query.join(Vleresime.filter(Vleresime.libri_id.equal(2))).all())
 
 # SEARCH autorin me emer
 
 
-@app.route('/api/autori/<name>')
+@app.route('/api/main/autori/<name>')
 def get_autori(name):
     return jsonify(Autori.query.filter(Autori.emri.like('%'+name+'%')).all())
 
