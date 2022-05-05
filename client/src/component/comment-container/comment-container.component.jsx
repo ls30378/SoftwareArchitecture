@@ -19,7 +19,7 @@ const CommentContainer = ({ bookid }) => {
       komenti: event.target.komenti.value,
     };
 
-    await axios.post(`http://localhost:4001/comment/post/${bookid}`, data);
+    await axios.post(`http://localhost:8080/api/comment/post/${bookid}`, data);
   };
   return (
     <div className="comment-container">

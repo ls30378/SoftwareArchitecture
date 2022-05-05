@@ -14,8 +14,9 @@ router.get('/post/:id', getPost, async (req, res) => {
     await res.status(200).json(post.comments)
 
 })
-router.get('/', (req, res) => {
-    res.send('Helo helo majne frojnde')
+
+router.get('/prova', async (req, res) => {
+    await res.status(200).json(req.params.id)
 })
 
 router.post('/post', async (req, res) => {

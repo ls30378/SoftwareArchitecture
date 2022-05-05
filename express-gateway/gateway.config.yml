@@ -10,10 +10,10 @@ apiEndpoints:
     paths: ["/client/", "./client/*"]
   comment:
     host: "*"
-    paths: ["/comment", "./comment/*"]
+    paths: ["/api/comment", "/api/comment/*"]
   admin:
     host: "*"
-    paths: ["/admin", "/admin/*"]
+    paths: ["/api/admin", "/api/admin/*"]
   main:
     host: "*"
     paths: ["/api/main", "/api/main/*"]
